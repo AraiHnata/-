@@ -18,8 +18,11 @@ const ber = new Chikichikitanuki({
         if(keyInput.key["a"] && this.position.x > 0 + this.size.x / 2){
             this.position.x -= 10;
         }
-      }
-})
+        if(keyInput.key["b"] && this.position.x < GameArea.x - this.size.x / 2){
+            this.position.x += 10;
+        }
+      },
+});
 
 sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
