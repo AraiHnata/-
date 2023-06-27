@@ -8,13 +8,19 @@ GameArea.refresh();
 
 let IsGameRunning = false;
 
-//バー
-const bar = new Chikichikitanuki({
-    ctx:MainCanvas,
-    img:test.png,
-    //たぬきベクトル
-    size:new
+//動かすバーカ
+const ber = new Chikichikitanuki({
+    ctx: MainCanvas,
+    img: "test.png",
+    size: new TanukiVector(124, 15),
+    position: new TanukiVector(GameArea.x /2, GameArea.y -100),
+      update: function(){
+        if(keyInput.key["a"] && this.position.x > 0 + this.size.x / 2){
+            this.position.x -= 10;
+        }
+      }
 })
+
 sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
 function gameStart() {
