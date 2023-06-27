@@ -18,7 +18,7 @@ const ber = new Chikichikitanuki({
         if(keyInput.key["a"] && this.position.x > 0 + this.size.x / 2){
             this.position.x -= 10;
         }
-        if(keyInput.key["b"] && this.position.x < GameArea.x - this.size.x / 2){
+        if(keyInput.key["d"] && this.position.x < GameArea.x - this.size.x / 2){
             this.position.x += 10;
         }
       },
@@ -45,9 +45,7 @@ function backMenu() {
     document.querySelector("#gameEnd").style.display = "none";
 }
 
-function update() {
-    
-}
+function update() {}
 
 //ゲームループの定義・開始
 const GameLoop = new GameLoopManager(() => {
