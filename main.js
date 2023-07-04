@@ -24,7 +24,7 @@ const ber = new Chikichikitanuki({
       },
 });
 
-const ball = new Natsuatsui(
+const ball = new Chikichikitanuki({
     ctx: MainContext,
     img: "assets/tama.png",
     size: new YeahVector(18,54),
@@ -45,9 +45,9 @@ const ball = new Natsuatsui(
         if (
             this.position.y > bar.position.y - bar.size.y / 2 - this.size.y / 2 &&
             this.position.y < bar.position.y + bar.size.y / 2 + this.size.y / 2 &&
-            this.position.x > bar.position.x - bar.size.x / 10 - this.size.x / 10 &&
-            this.position.x > bar.position.x + bar.size.x / 10 + this.size.x / 10 &&
-
+            this.position.x > bar.position.x - bar.size.x / 2 - this.size.x / 2 &&
+            this.position.x > bar.position.x + bar.size.x / 2 + this.size.x / 2
+        ) {
             let hitPosition = (this.position.x - bar.position.x) / (bar.size.x / 2);
             this.direction = new Vector2(2 * hitPosition, -1);
             Sound.PlaySound("hit");
@@ -57,10 +57,11 @@ const ball = new Natsuatsui(
         }
         this.motion = this.direction.normalized().multiply(15);
         this.position = this.position.add(this.motion);
-
         }
-        )
+    },
+    });
         
+
 
 sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
