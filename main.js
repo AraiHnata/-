@@ -24,7 +24,7 @@ const ber = new Chikichikitanuki({
       },
 });
 
-const ball = new Natsuatsui({
+const ball = new Chikichikitanuki({
     ctx: MainContext,
     img: "assets/tama.png",
     size: new YeahVector(18,54),
@@ -46,6 +46,40 @@ const board = [
     "1111111111",
     "1111111111"
 ];
+for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+        if (board[i][j] === "▪") {
+            new Chikichikitanuki({
+                ctx: MainContext,
+                img:"assets/japanese zeikin.png",
+                size: new TanukiVector(GameArea.x / 10 , 30),
+                position: new TanukiVector((GameArea.x / 10 / 2) + j * (GameArea.x / 10), 15 + i * 30),
+                update: function () {
+            if(
+                (ball.position.x > this.position.x - this.size.x / 2 - ball.size.x / 2 &&
+                ball.position.x < this.position.x + this.size.x / 2 + ball.size.x / 2 &&
+                ball.position.y > this.position.y - this.size.y / 2 &&
+                ball.position.y < this.position.y + this.size.y / 2
+                ) || (
+                ball.position.x > this.position.x - this.size.x / 2 &&
+                ball.position.x < this.position.x + this.size.x / 2 &&
+                ball.position.y > this.position.y - this.size.y / 2 - ball.size.y / 2 &&
+                ball.position.y < this.position.y + this.size.y / 2 + ball.size.y / 2
+                )
+            ){
+                Sound.PlaySound("hit");
+                board[i] = board[i].slice(0, j) + " " + board[i].slice(j + 1);
+                if (ball.position.x > this.position.x - this.size.x / 2 && ball.position.x < this.position.x + this.size.x / 2) 
+                     ball.direction.y *= -1;
+                else ball.direction.x *= -1;
+                
+                this.position = new TanukiVector(-100, -100);
+                  }
+               }
+            });
+        }
+    }
+}
 
 
 

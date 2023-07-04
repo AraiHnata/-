@@ -44,7 +44,7 @@ canvas {
     align-items: center;
     gap: calc(var(--height) * 0.05 * 1px);
     color: rgb(255, 255, 255);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(158, 252, 147, 0.5);
     text-align: center;
     padding: calc(var(--height) * 0.05 * 1px);
     backdrop-filter: blur(10px);
