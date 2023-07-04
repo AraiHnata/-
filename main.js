@@ -26,7 +26,7 @@ const ber = new Chikichikitanuki({
 
 const ball = new Natsuatsui({
     ctx: MainContext,
-    img: "assets/tama.png","tama.png",
+    img: "assets/tama.png",
     size: new YeahVector(18,54),
     position: new YeahVector(GameArea.x/ 2,GameArea.y/ 2),
     update: function () {
