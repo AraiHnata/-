@@ -34,7 +34,7 @@ const ball = new Natsuatsui({
             if(this.position.x < 0 + this.size.x / 2) {
                 this.direction.x = Math.abs(this.direction.x);
                 Sound.PlaySound("hit");
-            } else if (this.position.x > GameArea.x)
+            } else if (this.position.x > GameArea.x){ }
         }
     }
 })
