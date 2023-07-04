@@ -39,6 +39,14 @@ const ball = new Natsuatsui({
     }
 })
 
+const board = [
+    "0000000000",
+    "0000000000",
+    "1111111111",
+    "1111111111",
+    "1111111111"
+];
+
 sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
 function gameStart() {
