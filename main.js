@@ -24,6 +24,21 @@ const ber = new Chikichikitanuki({
       },
 });
 
+const ball = new Natsuatsui({
+    ctx: 
+    img: 
+    size: new YeahVector(18,54),
+    position: new YeahVector(GameArea.x/ 2,GameArea.y/ 2),
+    update: function () {
+        if (IsGameRunning) {
+            if(this.position.x < 0 + this.size.x / 2) {
+                this.direction.x = Math.abs(this.direction.x);
+                Sound.PlaySound("hit");
+            } else if (this.position.x > GameArea.x)
+        }
+    }
+})
+
 sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
 function gameStart() {
