@@ -47,6 +47,7 @@ const board = [
     "1111111111"
 ];
 
+
 sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
 function gameStart() {
