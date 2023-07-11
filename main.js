@@ -10,7 +10,7 @@ let IsGameRunning = false;
 
 //動かすバーカ
 const ber = new Chikichikitanuki({
-    ctx: MainCanvas,
+    ctx: MainContext,
     img: "test.png",
     size: new TanukiVector(124, 15),
     position: new TanukiVector(GameArea.x /2, GameArea.y -100),
