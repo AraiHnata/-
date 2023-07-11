@@ -9,15 +9,9 @@ GameArea.refresh();
 let IsGameRunning = false;
 
 //動かすバーカ
-<<<<<<< HEAD
 const bar = new Chikichikitanuki({
     ctx: MainCanvas,
-    img: "assets/japanese zeikin.png",
-=======
-const ber = new Chikichikitanuki({
-    ctx: MainContext,
-    img: "test.png",
->>>>>>> 67cdb36b1e74831623c3298b133b3ec4c4c933e4
+    img: "assets/osatu.png",
     size: new TanukiVector(124, 15),
     position: new TanukiVector(GameArea.x /2, GameArea.y - 100),
       update: function(){
