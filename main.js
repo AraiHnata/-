@@ -7,7 +7,11 @@ const Sound = new SoundManager();
 GameArea.refresh();
 
 let IsGameRunning = false;
-
+if(IsGameRunning){
+    bar.position = new Vector2(GameArea.x / 2,GameArea.y - 100);
+    ball.pozition = new Vector2(GameArea.x / 2,GameArea.y / 2);
+    ball.direction = new Vector2(Math.random() * 0.5 - 0.25, 1);
+}
 //動かすバーカ
 const bar = new CanvasComponents({
     ctx: MainContext,
@@ -23,6 +27,7 @@ const bar = new CanvasComponents({
         }
     },
 });
+
 const ball = new CanvasComponents({
     ctx: MainContext,
     img: "assets/tama.png",
@@ -53,6 +58,8 @@ const ball = new CanvasComponents({
         }
         if (this.position.y > GameArea.y - this.size.y / 2) {
             gameOver();
+            this.position.x = GameArea.x/ 2
+            this.position.y = GameArea.y/ 2
         }
         this.motion = this.direction.normalized().multiply(15);
         this.position = this.position.add(this.motion);
@@ -60,14 +67,34 @@ const ball = new CanvasComponents({
     },
     });
 ball.direction = new Vector2(0, 0)
-        
-const board = [
+
+let A = [
     "0000000000",
     "0000000000",
     "1111111111",
     "1111111111",
     "1111111111"
 ];
+let B = [
+    "1000110001",
+    "1100000011",
+    "1110000111",
+    "0011111100",
+    "1111111111"
+];
+
+let board = A
+
+const random = Math.random() * (5 - 1) + 1;
+
+if(random <= 1){
+    if(random <= 5){
+        const board = A
+    }else{
+        const board = B
+    }
+}
+ 
 for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
         if (board[i][j] === "1") {
