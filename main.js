@@ -60,7 +60,7 @@ const ball = new Chikichikitanuki({
         }
     },
     });
-ball.direction = new TanukiVector(0, 0);
+ball.direction = new TanukiVector(0, 0)
         
 const board = [
     "0000000000",
