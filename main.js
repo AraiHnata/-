@@ -38,11 +38,11 @@ const ball = new Chikichikitanuki({
                 this.direction.x = Math.abs(this.direction.x) * -1;
                 Sound.PlaySound("hit");
             }
-        if (this.position.y < 0 + this.size.y / 2){
+             if (this.position.y < 0 + this.size.y / 2){
             this.direction.y = Math.abs(this.direction.y);
             Sound.PlaySound("hit");
-        }
-        if (
+            }
+            if (
             this.position.y > bar.position.y - bar.size.y / 2 - this.size.y / 2 &&
             this.position.y < bar.position.y + bar.size.y / 2 + this.size.y / 2 &&
             this.position.x > bar.position.x - bar.size.x / 2 - this.size.x / 2 &&
@@ -60,6 +60,7 @@ const ball = new Chikichikitanuki({
         }
     },
     });
+ball.direction = new TanukiVector(0, 0);
         
 const board = [
     "0000000000",
