@@ -1,7 +1,7 @@
 const MainCanvas = document.getElementById("MainCanvas");
 const MainContext = MainCanvas.getContext("2d");
 const CanvasWrapper = document.querySelector("#wrapper");
-const GameArea = new CanvasManager(new Vector2(1280, 720), MainCanvas, CanvasWrapper);
+const GameArea = new CanvasManager(new TanukiVector(1280, 720), MainCanvas, CanvasWrapper);
 const keyInput = new keyInputManager();
 const Sound = new SoundManager();
 GameArea.refresh();
@@ -9,15 +9,9 @@ GameArea.refresh();
 let IsGameRunning = false;
 
 //動かすバーカ
-<<<<<<< HEAD
 const bar = new Chikichikitanuki({
-    ctx: MainCanvas,
-    img: "assets/japanese zeikin.png",
-=======
-const ber = new Chikichikitanuki({
     ctx: MainContext,
     img: "test.png",
->>>>>>> 67cdb36b1e74831623c3298b133b3ec4c4c933e4
     size: new TanukiVector(124, 15),
     position: new TanukiVector(GameArea.x /2, GameArea.y - 100),
       update: function(){
