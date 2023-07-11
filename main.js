@@ -9,9 +9,15 @@ GameArea.refresh();
 let IsGameRunning = false;
 
 //動かすバーカ
+<<<<<<< HEAD
 const bar = new Chikichikitanuki({
     ctx: MainCanvas,
     img: "assets/japanese zeikin.png",
+=======
+const ber = new Chikichikitanuki({
+    ctx: MainContext,
+    img: "test.png",
+>>>>>>> 67cdb36b1e74831623c3298b133b3ec4c4c933e4
     size: new TanukiVector(124, 15),
     position: new TanukiVector(GameArea.x /2, GameArea.y - 100),
       update: function(){
@@ -38,11 +44,11 @@ const ball = new Chikichikitanuki({
                 this.direction.x = Math.abs(this.direction.x) * -1;
                 Sound.PlaySound("hit");
             }
-        if (this.position.y < 0 + this.size.y / 2){
+             if (this.position.y < 0 + this.size.y / 2){
             this.direction.y = Math.abs(this.direction.y);
             Sound.PlaySound("hit");
-        }
-        if (
+            }
+            if (
             this.position.y > bar.position.y - bar.size.y / 2 - this.size.y / 2 &&
             this.position.y < bar.position.y + bar.size.y / 2 + this.size.y / 2 &&
             this.position.x > bar.position.x - bar.size.x / 2 - this.size.x / 2 &&
@@ -60,6 +66,7 @@ const ball = new Chikichikitanuki({
         }
     },
     });
+ball.direction = new TanukiVector(0, 0);
         
 const board = [
     "0000000000",
