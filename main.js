@@ -70,7 +70,7 @@ const board = [
 ];
 for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
-        if (board[i][j] === "▪") {
+        if (board[i][j] === "1") {
             new Chikichikitanuki({
                 ctx: MainContext,
                 img:"assets/japanese zeikin.png",
@@ -90,7 +90,7 @@ for (let i = 0; i < board.length; i++) {
                 )
             ){
                 Sound.PlaySound("hit");
-                board[i] = board[i].slice(0, j) + " " + board[i].slice(j + 1);
+                board[i] = board[i].slice(0, j) + "0" + board[i].slice(j + 1);
                 if (ball.position.x > this.position.x - this.size.x / 2 && ball.position.x < this.position.x + this.size.x / 2) 
                      ball.direction.y *= -1;
                 else ball.direction.x *= -1;
@@ -111,6 +111,9 @@ function gameStart() {
     Sound.PlaySound("click");
     document.querySelector("#menu").style.display = "none";
     document.querySelector("#game").style.display = "block";
+    bar.position = new Vector2(GameArea.x / 2,GameArea,y / - 100);
+    ball.pozition = new Vector2(GameArea.x / 2,GameArea,y / 2);
+    ball.direction = new vector2(Math.random() * 0.5 - 0.25, 1);
     IsGameRunning = true;
 }
 
