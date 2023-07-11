@@ -1,22 +1,22 @@
-class Vector2 {
+class TanukiVector {
   constructor(x = 0, y = 0) {
     this.x = x;
     this.y = y;
   }
   normalized() {
-    let normalized = new Vector2();
+    let normalized = new TanukiVector();
     normalized.x = this.x / Math.sqrt(this.x * this.x + this.y * this.y);
     normalized.y = this.y / Math.sqrt(this.x * this.x + this.y * this.y);
     return normalized;
   }
   add(vector) {
-    return new Vector2(this.x + vector.x, this.y + vector.y);
+    return new TanukiVector(this.x + vector.x, this.y + vector.y);
   }
   multiply(num) {
     if (typeof num === "number") {
-      return new Vector2(this.x * num, this.y * num);
+      return new TanukiVector(this.x * num, this.y * num);
     } else {
-      return new Vector2(this.x * num.x, this.y * num.y);
+      return new TanukiVector(this.x * num.x, this.y * num.y);
     }
   }
 }
