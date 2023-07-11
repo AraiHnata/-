@@ -10,8 +10,8 @@ let IsGameRunning = false;
 
 //動かすバーカ
 const bar = new Chikichikitanuki({
-    ctx: MainContext,
-    img: "test.png",
+    ctx: MainCanvas,
+    img: "assets/osatu.png",
     size: new TanukiVector(124, 15),
     position: new TanukiVector(GameArea.x /2, GameArea.y - 100),
       update: function(){
