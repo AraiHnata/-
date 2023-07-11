@@ -1,22 +1,22 @@
-class TanukiVector {
+class Vector2 {
   constructor(x = 0, y = 0) {
     this.x = x;
     this.y = y;
   }
   normalized() {
-    let normalized = new TanukiVector();
+    let normalized = new Vector2();
     normalized.x = this.x / Math.sqrt(this.x * this.x + this.y * this.y);
     normalized.y = this.y / Math.sqrt(this.x * this.x + this.y * this.y);
     return normalized;
   }
   add(vector) {
-    return new TanukiVector(this.x + vector.x, this.y + vector.y);
+    return new Vector2(this.x + vector.x, this.y + vector.y);
   }
   multiply(num) {
     if (typeof num === "number") {
-      return new TanukiVector(this.x * num, this.y * num);
+      return new Vector2(this.x * num, this.y * num);
     } else {
-      return new TanukiVector(this.x * num.x, this.y * num.y);
+      return new Vector2(this.x * num.x, this.y * num.y);
     }
   }
 }
@@ -59,9 +59,9 @@ class GameLoopManager {
   }
 }
 
-class Chikichikitanuki {
+class CanvasComponents {
   static components = [];
-  constructor({ ctx = false, img = "assets/error.png", size = new TanukiVector(50, 50), position = new TanukiVector(0, 0), motion = new TanukiVector(0, 0), rotate = 0, rotation = 0, update = () => {} } = {}) {
+  constructor({ ctx = false, img = "assets/error.png", size = new Vector2(50, 50), position = new Vector2(0, 0), motion = new Vector2(0, 0), rotate = 0, rotation = 0, update = () => {} } = {}) {
     this.ctx = ctx ? ctx : undefined;
     this.image = new Image();
     this.image.src = img;
@@ -71,7 +71,7 @@ class Chikichikitanuki {
     this.rotate = rotate;
     this.rotation = rotation;
     this.update = update;
-    Chikichikitanuki.components.push(this);
+    CanvasComponents.components.push(this);
   }
   render() {
     let x = this.position.x;

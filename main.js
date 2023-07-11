@@ -1,7 +1,7 @@
 const MainCanvas = document.getElementById("MainCanvas");
 const MainContext = MainCanvas.getContext("2d");
 const CanvasWrapper = document.querySelector("#wrapper");
-const GameArea = new CanvasManager(new TanukiVector(1280, 720), MainCanvas, CanvasWrapper);
+const GameArea = new CanvasManager(new Vector2(1280, 720), MainCanvas, CanvasWrapper);
 const keyInput = new keyInputManager();
 const Sound = new SoundManager();
 GameArea.refresh();
@@ -9,26 +9,25 @@ GameArea.refresh();
 let IsGameRunning = false;
 
 //動かすバーカ
-const bar = new Chikichikitanuki({
-    ctx: MainCanvas,
+const bar = new CanvasComponents({
+    ctx: MainContext,
     img: "assets/osatu.png",
-    size: new TanukiVector(124, 15),
-    position: new TanukiVector(GameArea.x /2, GameArea.y - 100),
-      update: function(){
-        if(keyInput.key["a"] && this.position.x > 0 + this.size.x / 2){
+    size: new Vector2(124, 15),
+    position: new Vector2(GameArea.x / 2, GameArea.y - 100),
+    update: function () {
+        if (keyInput.key["a"] && this.position.x > 0 + this.size.x / 2) {
             this.position.x -= 10;
         }
-        if(keyInput.key["d"] && this.position.x < GameArea.x - this.size.x / 2){
+        if (keyInput.key["d"] && this.position.x < GameArea.x - this.size.x / 2) {
             this.position.x += 10;
         }
-      },
+    },
 });
-
-const ball = new Chikichikitanuki({
+const ball = new CanvasComponents({
     ctx: MainContext,
     img: "assets/tama.png",
-    size: new YeahVector(18,54),
-    position: new YeahVector(GameArea.x/ 2,GameArea.y/ 2),
+    size: new Vector2(36,36),
+    position: new Vector2(GameArea.x/ 2,GameArea.y/ 2),
     update: function () {
         if (IsGameRunning) {
             if(this.position.x < 0 + this.size.x / 2) {
@@ -46,7 +45,7 @@ const ball = new Chikichikitanuki({
             this.position.y > bar.position.y - bar.size.y / 2 - this.size.y / 2 &&
             this.position.y < bar.position.y + bar.size.y / 2 + this.size.y / 2 &&
             this.position.x > bar.position.x - bar.size.x / 2 - this.size.x / 2 &&
-            this.position.x > bar.position.x + bar.size.x / 2 + this.size.x / 2
+            this.position.x < bar.position.x + bar.size.x / 2 + this.size.x / 2
         ) {
             let hitPosition = (this.position.x - bar.position.x) / (bar.size.x / 2);
             this.direction = new Vector2(2 * hitPosition, -1);
@@ -60,7 +59,7 @@ const ball = new Chikichikitanuki({
         }
     },
     });
-ball.direction = new TanukiVector(0, 0)
+ball.direction = new Vector2(0, 0)
         
 const board = [
     "0000000000",
@@ -72,14 +71,15 @@ const board = [
 for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
         if (board[i][j] === "1") {
-            new Chikichikitanuki({
+            new CanvasComponents({
                 ctx: MainContext,
                 img:"assets/japanese zeikin.png",
-                size: new TanukiVector(GameArea.x / 10 , 30),
-                position: new TanukiVector((GameArea.x / 10 / 2) + j * (GameArea.x / 10), 15 + i * 30),
+                size: new Vector2(GameArea.x / 10 , 30),
+                position: new Vector2((GameArea.x / 10 / 2) + j * (GameArea.x / 10), 15 + i * 30),
                 update: function () {
             if(
-                (ball.position.x > this.position.x - this.size.x / 2 - ball.size.x / 2 &&
+                (
+                ball.position.x > this.position.x - this.size.x / 2 - ball.size.x / 2 &&
                 ball.position.x < this.position.x + this.size.x / 2 + ball.size.x / 2 &&
                 ball.position.y > this.position.y - this.size.y / 2 &&
                 ball.position.y < this.position.y + this.size.y / 2
@@ -96,9 +96,9 @@ for (let i = 0; i < board.length; i++) {
                      ball.direction.y *= -1;
                 else ball.direction.x *= -1;
                 
-                this.position = new TanukiVector(-100, -100);
+                this.position = new Vector2(-100, -100);
                   }
-               }
+               },
             });
         }
     }
@@ -106,15 +106,15 @@ for (let i = 0; i < board.length; i++) {
 
 
 
-sound.LoadSound("click", "assets/click.mp3");
+Sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
 function gameStart() {
     Sound.PlaySound("click");
     document.querySelector("#menu").style.display = "none";
     document.querySelector("#game").style.display = "block";
-    bar.position = new Vector2(GameArea.x / 2,GameArea,y / - 100);
-    ball.pozition = new Vector2(GameArea.x / 2,GameArea,y / 2);
-    ball.direction = new vector2(Math.random() * 0.5 - 0.25, 1);
+    bar.position = new Vector2(GameArea.x / 2,GameArea.y - 100);
+    ball.pozition = new Vector2(GameArea.x / 2,GameArea.y / 2);
+    ball.direction = new Vector2(Math.random() * 0.5 - 0.25, 1);
     IsGameRunning = true;
 }
 
