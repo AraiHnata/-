@@ -61,7 +61,7 @@ class GameLoopManager {
 
 class Chikichikitanuki {
   static components = [];
-  constructor({ ctx = false, img = "assets/error.png", size = new TanukiVector(50, 50), position = new Vector2(0, 0), motion = new Vector2(0, 0), rotate = 0, rotation = 0, update = () => {} } = {}) {
+  constructor({ ctx = false, img = "assets/error.png", size = new TanukiVector(50, 50), position = new TanukiVector(0, 0), motion = new TanukiVector(0, 0), rotate = 0, rotation = 0, update = () => {} } = {}) {
     this.ctx = ctx ? ctx : undefined;
     this.image = new Image();
     this.image.src = img;
