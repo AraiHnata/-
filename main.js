@@ -1,7 +1,7 @@
 const MainCanvas = document.getElementById("MainCanvas");
 const MainContext = MainCanvas.getContext("2d");
 const CanvasWrapper = document.querySelector("#wrapper");
-const GameArea = new CanvasManager(new Vector2(1280, 720), MainCanvas, CanvasWrapper);
+const GameArea = new CanvasManager(new TanukiVector(1280, 720), MainCanvas, CanvasWrapper);
 const keyInput = new keyInputManager();
 const Sound = new SoundManager();
 GameArea.refresh();
