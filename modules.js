@@ -71,7 +71,7 @@ class Chikichikitanuki {
     this.rotate = rotate;
     this.rotation = rotation;
     this.update = update;
-    CanvasComponents.components.push(this);
+    Chikichikitanuki.components.push(this);
   }
   render() {
     let x = this.position.x;
