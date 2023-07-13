@@ -7,6 +7,7 @@ const Sound = new SoundManager();
 GameArea.refresh();
 let score = 0;
 let highScore = 0;
+let allscore = 0;
 
 let IsGameRunning = false;
 
@@ -102,7 +103,8 @@ for (let i = 0; i < board.length; i++) {
                 )
             ){
                 Sound.PlaySound("tya");
-                score++;
+                score+=1000;
+                allscore++;
                 let nowScoreValue = document.querySelector(".nowScoreValue");
                 nowScoreValue.textContent = score;
                 if(score > highScore){
@@ -111,6 +113,9 @@ for (let i = 0; i < board.length; i++) {
                     highScoreSpan.textContent = highScore;
                     let highScoreSpan2 = document.querySelector('.highScoreValue2');
                     highScoreSpan2.textContent = highScore;
+                }
+                if(allscore == 30){
+                    gameOver();
                 }
                 board[i] = board[i].slice(0, j) + "0" + board[i].slice(j + 1);
                 if (ball.position.x > this.position.x - this.size.x / 2 && ball.position.x < this.position.x + this.size.x / 2) 
