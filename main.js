@@ -5,6 +5,8 @@ const GameArea = new CanvasManager(new Vector2(1280, 720), MainCanvas, CanvasWra
 const keyInput = new keyInputManager();
 const Sound = new SoundManager();
 GameArea.refresh();
+let score = 0;
+let highScore = 0;
 
 let IsGameRunning = false;
 if(IsGameRunning){
@@ -20,10 +22,10 @@ const bar = new CanvasComponents({
     position: new Vector2(GameArea.x / 2, GameArea.y - 100),
     update: function () {
         if (keyInput.key["a"] && this.position.x > 0 + this.size.x / 2) {
-            this.position.x -= 10;
+            this.position.x -= 15;
         }
         if (keyInput.key["d"] && this.position.x < GameArea.x - this.size.x / 2) {
-            this.position.x += 10;
+            this.position.x += 15;
         }
     },
 });
@@ -89,9 +91,9 @@ const random = Math.random() * (5 - 1) + 1;
 
 if(random <= 1){
     if(random <= 5){
-        const board = A
+        let board = A
     }else{
-        const board = B
+        let board = B
     }
 }
  
@@ -101,7 +103,7 @@ for (let i = 0; i < board.length; i++) {
             new CanvasComponents({
                 ctx: MainContext,
                 img:"assets/japanese zeikin.png",
-                size: new Vector2(GameArea.x / 10 , 30),
+                size: new Vector2(GameArea.x / 10 , 40),
                 position: new Vector2((GameArea.x / 10 / 2) + j * (GameArea.x / 10), 15 + i * 30),
                 update: function () {
             if(
@@ -118,6 +120,13 @@ for (let i = 0; i < board.length; i++) {
                 )
             ){
                 Sound.PlaySound("hit");
+                score++;
+                let nowscore = document.querySelector('#scoreValue');
+                if(score > highScore){
+                    highScore = score;
+                    let highScoreSpan = document.querySelector('.highScoreValue');
+                    highScoreSpan.textContent = highScore;
+                }
                 board[i] = board[i].slice(0, j) + "0" + board[i].slice(j + 1);
                 if (ball.position.x > this.position.x - this.size.x / 2 && ball.position.x < this.position.x + this.size.x / 2) 
                      ball.direction.y *= -1;
@@ -132,7 +141,6 @@ for (let i = 0; i < board.length; i++) {
 }
 
 
-
 Sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
 function gameStart() {
@@ -142,6 +150,7 @@ function gameStart() {
     bar.position = new Vector2(GameArea.x / 2,GameArea.y - 100);
     ball.pozition = new Vector2(GameArea.x / 2,GameArea.y / 2);
     ball.direction = new Vector2(Math.random() * 0.5 - 0.25, 1);
+    score = 0;
     IsGameRunning = true;
 }
 
