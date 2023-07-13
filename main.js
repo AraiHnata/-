@@ -9,11 +9,13 @@ let score = 0;
 let highScore = 0;
 
 let IsGameRunning = false;
+
 if(IsGameRunning){
     bar.position = new Vector2(GameArea.x / 2,GameArea.y - 100);
     ball.pozition = new Vector2(GameArea.x / 2,GameArea.y / 2);
     ball.direction = new Vector2(Math.random() * 0.5 - 0.25, 1);
 }
+
 //動かすバーカ
 const bar = new CanvasComponents({
     ctx: MainContext,
@@ -121,7 +123,8 @@ for (let i = 0; i < board.length; i++) {
             ){
                 Sound.PlaySound("hit");
                 score++;
-                let nowscore = document.querySelector('#scoreValue');
+                let nowScoreValue = document.querySelector(".nowScoreValue");
+                nowScoreValue.textContent = score;
                 if(score > highScore){
                     highScore = score;
                     let highScoreSpan = document.querySelector('.highScoreValue');
@@ -153,6 +156,8 @@ function gameStart() {
     ball.pozition = new Vector2(GameArea.x / 2,GameArea.y / 2);
     ball.direction = new Vector2(Math.random() * 0.5 - 0.25, 1);
     score = 0;
+    let nowScoreValue = document.querySelector(".nowScoreValue");
+    nowScoreValue.textContent = 0;
     IsGameRunning = true;
 }
 
