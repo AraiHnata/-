@@ -18,14 +18,14 @@ if(IsGameRunning){
 const bar = new CanvasComponents({
     ctx: MainContext,
     img: "assets/osatu.png",
-    size: new Vector2(124, 15),
+    size: new Vector2(124, 40),
     position: new Vector2(GameArea.x / 2, GameArea.y - 100),
     update: function () {
         if (keyInput.key["a"] && this.position.x > 0 + this.size.x / 2) {
-            this.position.x -= 15;
+            this.position.x -= 12;
         }
         if (keyInput.key["d"] && this.position.x < GameArea.x - this.size.x / 2) {
-            this.position.x += 15;
+            this.position.x += 12;
         }
     },
 });
@@ -91,9 +91,9 @@ const random = Math.random() * (5 - 1) + 1;
 
 if(random <= 1){
     if(random <= 5){
-        let board = A
+        board = A
     }else{
-        let board = B
+        board = B
     }
 }
  
