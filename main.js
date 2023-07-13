@@ -126,6 +126,8 @@ for (let i = 0; i < board.length; i++) {
                     highScore = score;
                     let highScoreSpan = document.querySelector('.highScoreValue');
                     highScoreSpan.textContent = highScore;
+                    let highScoreSpan2 = document.querySelector('.highScoreValue2');
+                    highScoreSpan2.textContent = highScore;
                 }
                 board[i] = board[i].slice(0, j) + "0" + board[i].slice(j + 1);
                 if (ball.position.x > this.position.x - this.size.x / 2 && ball.position.x < this.position.x + this.size.x / 2) 
