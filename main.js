@@ -101,7 +101,7 @@ for (let i = 0; i < board.length; i++) {
                 ball.position.y < this.position.y + this.size.y / 2 + ball.size.y / 2
                 )
             ){
-                Sound.PlaySound("hit");
+                Sound.PlaySound("tya");
                 score++;
                 let nowScoreValue = document.querySelector(".nowScoreValue");
                 nowScoreValue.textContent = score;
@@ -128,6 +128,7 @@ for (let i = 0; i < board.length; i++) {
 
 Sound.LoadSound("click", "assets/click.mp3");
 Sound.LoadSound("hit", "assets/hit.mp3");
+Sound.LoadSound("tya", "assets/tya.mp3");
 function gameStart() {
     Sound.PlaySound("click");
     document.querySelector("#menu").style.display = "none";
