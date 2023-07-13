@@ -72,33 +72,13 @@ const ball = new CanvasComponents({
     });
 ball.direction = new Vector2(0, 0)
 
-let A = [
+let board = [
     "0000000000",
     "0000000000",
     "1111111111",
     "1111111111",
     "1111111111"
 ];
-let B = [
-    "1000110001",
-    "1100000011",
-    "1110000111",
-    "0011111100",
-    "1111111111"
-];
-
-let board = A
-
-const random = Math.random() * (5 - 1) + 1;
-
-if(random <= 1){
-    if(random <= 5){
-        board = A
-    }else{
-        board = B
-    }
-}
- 
 for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
         if (board[i][j] === "1") {
