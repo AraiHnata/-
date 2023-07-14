@@ -7,7 +7,6 @@ const Sound = new SoundManager();
 GameArea.refresh();
 let score = 0;
 let highScore = 0;
-let allscore = 0;
 
 let IsGameRunning = false;
 
@@ -104,7 +103,6 @@ for (let i = 0; i < board.length; i++) {
             ){
                 Sound.PlaySound("tya");
                 score+=1000;
-                allscore++;
                 let nowScoreValue = document.querySelector(".nowScoreValue");
                 nowScoreValue.textContent = score;
                 if(score > highScore){
@@ -114,8 +112,8 @@ for (let i = 0; i < board.length; i++) {
                     let highScoreSpan2 = document.querySelector('.highScoreValue2');
                     highScoreSpan2.textContent = highScore;
                 }
-                if(allscore == 30){
-                    gameOver();
+                if(score == 30000){
+                    gameClear();
                 }
                 board[i] = board[i].slice(0, j) + "0" + board[i].slice(j + 1);
                 if (ball.position.x > this.position.x - this.size.x / 2 && ball.position.x < this.position.x + this.size.x / 2) 
@@ -144,6 +142,12 @@ function gameStart() {
     let nowScoreValue = document.querySelector(".nowScoreValue");
     nowScoreValue.textContent = 0;
     IsGameRunning = true;
+}
+
+function gameClear(){
+    document.querySelector("#gameClear").style.display = "block";
+    IsGameRunning = false;
+    score = new 0;
 }
 
 function gameOver() {
