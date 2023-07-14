@@ -139,6 +139,7 @@ function gameStart() {
     bar.position = new Vector2(GameArea.x / 2,GameArea.y - 100);
     ball.pozition = new Vector2(GameArea.x / 2,GameArea.y / 2);
     ball.direction = new Vector2(Math.random() * 0.5 - 0.25, 1);
+    score = 0;
     let nowScoreValue = document.querySelector(".nowScoreValue");
     nowScoreValue.textContent = 0;
     IsGameRunning = true;
@@ -147,13 +148,11 @@ function gameStart() {
 function gameClear(){
     document.querySelector("#gameClear").style.display = "block";
     IsGameRunning = false;
-    score = 0;
 }
 
 function gameOver() {
     document.querySelector("#gameEnd").style.display = "block";
     IsGameRunning = false;
-    score = 0;
 }
 
 function backMenu() {
