@@ -147,13 +147,13 @@ function gameStart() {
 function gameClear(){
     document.querySelector("#gameClear").style.display = "block";
     IsGameRunning = false;
-    score = 0;
+    score = new 0;
 }
 
 function gameOver() {
     document.querySelector("#gameEnd").style.display = "block";
     IsGameRunning = false;
-    score = 0;
+    score = new 0;
 }
 
 function backMenu() {
